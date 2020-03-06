@@ -5,5 +5,7 @@ interface Props {
 }
 
 export function ButtonCreateNewTask({ onClick }: Props) {
-  return <button>Create New Task</button>
+  const handleClickCreateNewTask = () => onClick()
+
+  return <button onClick={handleClickCreateNewTask}>Create New Task</button>
 }
