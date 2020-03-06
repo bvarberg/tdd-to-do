@@ -5,6 +5,11 @@ import { ButtonCreateNewTask } from "."
 
 describe("ButtonCreateNewTask", () => {
   it("calls the provided click event handler when clicked", () => {
+    const mockOnClick = testdouble.function()
+
+    const { getByText } = render(<ButtonCreateNewTask />)
+    fireEvent.click(getByText("Create New Task"))
+
     testdouble.verify(mockOnClick())
   })
 })
