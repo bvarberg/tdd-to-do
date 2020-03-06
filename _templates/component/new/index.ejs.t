@@ -5,6 +5,6 @@ import React from "react"
 
 interface Props {}
 
-export function <%= name %>(props: Props) {
+export function <%= name.split("/").pop() %>({}: Props) {
   return null
 }

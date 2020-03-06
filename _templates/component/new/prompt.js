@@ -25,7 +25,10 @@ module.exports = {
       ])
       .then(({ name, includeStories, includeTests }) => {
         return {
-          name: i.camelize(name, false),
+          name: name
+            .split("/")
+            .map(part => i.camelize(part, false))
+            .join("/"),
           includeStories,
           includeTests,
         }
