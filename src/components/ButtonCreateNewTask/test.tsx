@@ -7,7 +7,7 @@ describe("ButtonCreateNewTask", () => {
   it("calls the provided click event handler when clicked", () => {
     const mockOnClick = testdouble.function()
 
-    const { getByText } = render(<ButtonCreateNewTask />)
+    const { getByText } = render(<ButtonCreateNewTask onClick={mockOnClick} />)
     fireEvent.click(getByText("Create New Task"))
 
     testdouble.verify(mockOnClick())
