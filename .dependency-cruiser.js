@@ -16,6 +16,37 @@ module.exports = {
         pathNot: "^src/components/$1/.+"
       }
     },
+    {
+      name: 'not-to-test',
+      comment:
+        'This module depends on a test file. The sole responsibility of a test file is to test code. ' +
+        "If there's something in a test file that's of use to other modules, it doesn't have that single " +
+        'responsibility anymore. Factor it out into (e.g.) a separate utility/helper or a mock.',
+      severity: 'error',
+      from: {},
+      to: {
+        path: '^.*[.|/]test\\.tsx?$'
+      }
+    },
+    {
+      name: 'not-to-dev-dep',
+      severity: 'error',
+      comment:
+        "This module depends on an npm package from the 'devDependencies' section of your " +
+        'package.json. It looks like something that ships to production, though. To prevent problems ' +
+        "with npm packages that aren't there on production declare it (only!) in the 'dependencies'" +
+        'section of your package.json. If this module is development only - add it to the ' +
+        'from.pathNot re of the not-to-dev-dep rule in the dependency-cruiser configuration',
+      from: {
+        path: '^src',
+        pathNot: '^(src/factories|src/services|.*[.|/](test|stories)\.tsx?$)'
+      },
+      to: {
+        dependencyTypes: [
+          'npm-dev'
+        ]
+      }
+    },
 
     /* rules from the 'recommended' preset: */
     {
@@ -110,51 +141,6 @@ module.exports = {
     },
 
     /* rules you might want to tweak for your specific situation: */
-    {
-      name: 'not-to-test',
-      comment:
-        "This module depends on code within a folder that should only contain tests. As tests don't " +
-        "implement functionality this is odd. Either you're writing a test outside the test folder " +
-        "or there's something in the test folder that isn't a test.",
-      severity: 'error',
-      from: {
-        pathNot: '^(test|spec)'
-      },
-      to: {
-        path: '^(test|spec)'
-      }
-    },
-    {
-      name: 'not-to-spec',
-      comment:
-        'This module depends on a spec (test) file. The sole responsibility of a spec file is to test code. ' +
-        "If there's something in a spec that's of use to other modules, it doesn't have that single " +
-        'responsibility anymore. Factor it out into (e.g.) a separate utility/ helper or a mock.',
-      severity: 'error',
-      from: {},
-      to: {
-        path: '\\.spec\\.(js|ts|ls|coffee|litcoffee|coffee\\.md)$'
-      }
-    },
-    {
-      name: 'not-to-dev-dep',
-      severity: 'error',
-      comment:
-        "This module depends on an npm package from the 'devDependencies' section of your " +
-        'package.json. It looks like something that ships to production, though. To prevent problems ' +
-        "with npm packages that aren't there on production declare it (only!) in the 'dependencies'" +
-        'section of your package.json. If this module is development only - add it to the ' +
-        'from.pathNot re of the not-to-dev-dep rule in the dependency-cruiser configuration',
-      from: {
-        path: '^(src|app|lib)',
-        pathNot: '^.*[.|/](test|stories)\.(ts|tsx)$'
-      },
-      to: {
-        dependencyTypes: [
-          'npm-dev'
-        ]
-      }
-    },
     {
       name: 'optional-deps-used',
       severity: 'info',
