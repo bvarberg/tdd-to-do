@@ -47,6 +47,7 @@
     "build": "EXTEND_ESLINT=true react-scripts build",
     "test": "EXTEND_ESLINT=true react-scripts test --testMatch=[ \"**/?(*.)test.ts?(x)\" ]",
     "new:component": "hygen component new",
+    "new:spec": "hygen spec new",
     "new:type": "hygen type new",
     "new:util": "hygen util new",
     "prepush": "npm run test:ci",
