@@ -1,40 +1,11 @@
 import { cleanup, fireEvent, render } from "@testing-library/react"
-import React, { useContext, useState } from "react"
+import React from "react"
 import testdouble from "testdouble"
 import {
   Context as ContextTaskStorage,
   TaskStorage,
 } from "../../services/TaskStorage"
-
-function ActionCreateNewTask() {
-  const taskStorage = useContext(ContextTaskStorage)
-  const [isOpen, setIsOpen] = useState<boolean>(false)
-  const [description, setDescription] = useState<string>("")
-
-  const handleClickCreateNewTask = () => setIsOpen(true)
-
-  const handleDescriptionChange: React.ChangeEventHandler<HTMLInputElement> = event => {
-    setDescription(event.target.value)
-  }
-
-  const handleClickSave = () => {
-    taskStorage.insert({ description })
-  }
-
-  return (
-    <div>
-      {isOpen && (
-        <input
-          placeholder="Task description"
-          value={description}
-          onChange={handleDescriptionChange}
-        />
-      )}
-      <button onClick={handleClickSave}>Save</button>
-      <button onClick={handleClickCreateNewTask}>Create New Task</button>
-    </div>
-  )
-}
+import { ActionCreateNewTask } from "."
 
 describe("ActionCreateNewTask", () => {
   afterEach(cleanup)
