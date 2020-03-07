@@ -10,4 +10,8 @@ export class MemoryTaskStorage implements TaskStorage {
   async insert({ description }: { description: string }) {
     this._tasks.push({ description })
   }
+
+  async findAll() {
+    return this._tasks.map(t => t)
+  }
 }
