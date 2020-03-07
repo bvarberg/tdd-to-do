@@ -1,5 +1,18 @@
 import React from "react"
+import {
+  Context as ContextTaskStorage,
+  TaskStorage,
+} from "../../services/TaskStorage"
+import { ActionCreateNewTask } from "../ActionCreateNewTask"
 
-export function App() {
-  return <div className="App"></div>
+interface Props {
+  taskStorage: TaskStorage
+}
+
+export function App({ taskStorage }: Props) {
+  return (
+    <ContextTaskStorage.Provider value={taskStorage}>
+      <ActionCreateNewTask />
+    </ContextTaskStorage.Provider>
+  )
 }
