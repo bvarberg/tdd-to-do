@@ -1,13 +1,10 @@
 import { cleanup, fireEvent, render } from "@testing-library/react"
-import React, { createContext, useContext, useState } from "react"
+import React, { useContext, useState } from "react"
 import testdouble from "testdouble"
-
-interface TaskStorage {
-  insert(opts: { description: string }): Promise<void>
-}
-
-const defaultTaskStorage = testdouble.object<TaskStorage>()
-const ContextTaskStorage = createContext<TaskStorage>(defaultTaskStorage)
+import {
+  Context as ContextTaskStorage,
+  TaskStorage,
+} from "../../services/TaskStorage"
 
 function ActionCreateNewTask() {
   const taskStorage = useContext(ContextTaskStorage)
