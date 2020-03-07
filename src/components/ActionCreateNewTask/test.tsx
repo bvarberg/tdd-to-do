@@ -11,8 +11,11 @@ const ContextTaskStorage = createContext<TaskStorage>(defaultTaskStorage)
 
 function ActionCreateNewTask() {
   const taskStorage = useContext(ContextTaskStorage)
-
+  const [isOpen, setIsOpen] = useState<boolean>(false)
   const [description, setDescription] = useState<string>("")
+
+  const handleClickCreateNewTask = () => setIsOpen(true)
+
   const handleDescriptionChange: React.ChangeEventHandler<HTMLInputElement> = event => {
     setDescription(event.target.value)
   }
@@ -23,13 +26,15 @@ function ActionCreateNewTask() {
 
   return (
     <div>
-      <input
-        placeholder="Task description"
-        value={description}
-        onChange={handleDescriptionChange}
-      />
+      {isOpen && (
+        <input
+          placeholder="Task description"
+          value={description}
+          onChange={handleDescriptionChange}
+        />
+      )}
       <button onClick={handleClickSave}>Save</button>
-      <button>Create New Task</button>
+      <button onClick={handleClickCreateNewTask}>Create New Task</button>
     </div>
   )
 }
@@ -44,7 +49,19 @@ describe("ActionCreateNewTask", () => {
   })
 
   describe("when the button for creating a new task is clicked", () => {
-    it.todo("reveals a form for filling out information about the task")
+    it("reveals a form for filling out information about the task", () => {
+      const { container, getByText, queryByPlaceholderText } = render(
+        <ActionCreateNewTask />,
+      )
+
+      expect(container).not.toContainElement(
+        queryByPlaceholderText("Task description"),
+      )
+      fireEvent.click(getByText("Create New Task"))
+      expect(container).toContainElement(
+        queryByPlaceholderText("Task description"),
+      )
+    })
   })
 
   describe("when the user enters task details and clicks save", () => {
