@@ -37,15 +37,17 @@ function ActionCreateNewTask() {
 describe("ActionCreateNewTask", () => {
   afterEach(cleanup)
 
-  it("clicking 'Create New Task' reveals a form for creating a task", () => {
-    const { getByText, getByPlaceholderText } = render(<ActionCreateNewTask />)
-    fireEvent.click(getByText("Create New Task"))
-    const input = getByPlaceholderText("Task description")
+  it("displays a button for creating a new task", () => {
+    const { getByText } = render(<ActionCreateNewTask />)
 
-    expect(input).toBeDefined()
+    expect(getByText("Create New Task")).toBeDefined()
   })
 
-  describe("when the user types a task description and clicks save", () => {
+  describe("when the button for creating a new task is clicked", () => {
+    it.todo("reveals a form for filling out information about the task")
+  })
+
+  describe("when the user enters task details and clicks save", () => {
     it("inserts a new task in task storage", () => {
       const taskStorage = testdouble.object<TaskStorage>()
 
