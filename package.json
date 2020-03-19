@@ -99,6 +99,7 @@
     ]
   },
   "loki": {
+    "chromeSelector": "#root > *",
     "requireReference": true,
     "configurations": {
       "chrome": {
