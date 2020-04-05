@@ -8,10 +8,11 @@ describe("user creates first task", () => {
       cy.findByText("Create new task", { exact: false }).click()
       cy.findByPlaceholderText("Task description")
         .click()
-        .type("create my first task")
+        .type("My first task")
       cy.findByText("Save").click()
+      cy.findByText("Refresh").click()
 
-      cy.findByText("Create my first task").should("exist")
+      cy.findAllByTestId("task").should("have.length", 1)
     })
   })
 })
