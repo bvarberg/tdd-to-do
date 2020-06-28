@@ -33,7 +33,6 @@
     "husky": "^4.2.5",
     "husky-add-issue-tracker": "^0.0.9",
     "hygen": "^5.0.3",
-    "loki": "^0.20.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^1.19.1",
     "serve": "^11.3.2",
@@ -66,18 +65,13 @@
     "test:e2e:ci": "CYPRESS_baseUrl=http://localhost:5000 start-server-and-test start:ci http://localhost:5000 \"cypress run --port 5052\"",
     "test:lint": "eslint -c ./.eslintrc.js 'src/**/*.{ts,tsx}'",
     "test:lint:fix": "npm run test:lint -- --fix",
-    "test:playground": "NODE_ENV=loki BABEL_ENV=development start-storybook -p 9009 -s public",
+    "test:playground": "BABEL_ENV=development start-storybook -p 9009 -s public",
     "test:playground:build": "build-storybook",
     "test:playground:ci": "start-storybook -p 5000 -s public --ci",
     "test:types": "tsc",
     "test:unit": "npm run test --",
     "test:unit:coverage": "npm run test:unit -- --coverage --watchAll=false",
     "test:unit:coverage:watch": "npm run test:unit:coverage -- --watch",
-    "test:visual": "CI=true loki --port 9009 --chromeDockerImage=yukinying/chrome-headless-browser-xl:74.0.3729.28",
-    "test:visual:ci:start": "CI=true loki --port 5000 --chromeDockerImage=yukinying/chrome-headless-browser-xl:74.0.3729.28",
-    "test:visual:ci": "start-server-and-test test:playground:ci http://localhost:5000 test:visual:ci:start",
-    "test:visual:approve": "npm run test:visual -- approve",
-    "test:visual:update": "npm run test:visual -- update",
     "test:analyze": "npm-run-all build && source-map-explorer build/static/js/main.*",
     "build-storybook": "build-storybook -s public"
   },
@@ -97,20 +91,6 @@
       "!**/*.d.ts",
       "src/**/*.{ts,tsx}"
     ]
-  },
-  "loki": {
-    "chromeSelector": "#root > *",
-    "requireReference": true,
-    "configurations": {
-      "chrome": {
-        "target": "chrome.docker",
-        "width": 800,
-        "height": 800,
-        "deviceScaleFactor": 1,
-        "mobile": false,
-        "fitWindow": false
-      }
-    }
   },
   "browserslist": {
     "production": [

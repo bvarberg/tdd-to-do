@@ -13,9 +13,8 @@ This project includes configuration and tooling that conforms to Crema's baselin
 - [ESLint](https://eslint.org) for code linting
 - [Hygen](http://www.hygen.io) for component and util generators
 - [Jest](https://jestjs.io) for unit tests
-- [Loki](https://loki.js.org) for visual testing
 - [Prettier](https://prettier.io) for code formatting (via ESLint plugin)
-- [Storybook](https://storybook.js.org) for component playground (and used by Loki)
+- [Storybook](https://storybook.js.org) for component playground
 - [TypeScript](http://www.typescriptlang.org) for Static Typing in JavaScript ([Learn](http://www.typescriptlang.org/docs/handbook/basic-types.html))
 
 ## 🏗 Setup
@@ -58,9 +57,6 @@ Run the following scripts with `npm run <SCRIPT_HERE>`:
 - `test:playground` - run component playground (storybook)
 - `test:unit:coverage` - run unit tests with coverage
 - `test:unit` - run unit tests
-- `test:visual:approve` - approve visual changes
-- `test:visual:update` - update or create visual references
-- `test:visual` - run visual tests (loki)
 - `deps:graph` - run dependency validation and generate an SVG representing the dependency graph (requires [`graphviz`](https://graphviz.org/) to be installed on your device)
 - `deps:report` - run dependency validation and generate an HTML report
 

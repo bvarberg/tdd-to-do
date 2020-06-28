@@ -32,7 +32,7 @@ This directory is intended to organize React components.
    }
    ```
 6. `ExampleComponent/README.md` contains component documentation:
-      
+
         # `<ExampleComponent />`
 
          DESCRIPTION_HERE
@@ -44,15 +44,6 @@ This directory is intended to organize React components.
          - `index.tsx`: Component code
          - `README.md`: Component documentation (hey, that's me!)
 
-         ## Example
-
-         ![ExampleComponent](../../../.loki/reference/chrome_ExampleComponent_example.png)
-
-         > Image location: [`.loki/reference/chrome_ExampleComponent_example.png`](../../../.loki/reference/chrome_ExampleComponent_example.png)
-         > 
-         > To regenerate: 
-         > 1. `npm run test:playground` (skip if running)
-         > 1. `npm run test:visual:update -- --storiesFilter="^ExampleComponent example\$"`
 7. `ExampleComponent/stories.tsx` contains component stories:
    ```tsx
    import React from "react"
@@ -73,7 +64,7 @@ This directory is intended to organize React components.
 
    ```
 8. `ExampleComponent/test.tsx` contains component tests:
-   ```tsx      
+   ```tsx
    import { ExampleComponent } from "."
    import React from "react"
    import { render } from "@testing-library/react"
