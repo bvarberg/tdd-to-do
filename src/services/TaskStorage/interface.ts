@@ -1,8 +1,8 @@
-export interface TaskStorage {
+export type TaskStorage = {
   insert(opts: InsertOptions): Promise<void>
 }
 
-type InsertOptions = {
+export type InsertOptions = {
   task: {
     description: string
   }
