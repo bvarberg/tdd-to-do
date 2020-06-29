@@ -5,7 +5,7 @@ import React, {
   useState,
 } from "react"
 import { useForm } from "react-hook-form"
-import { useMutation } from "react-query"
+import { queryCache, useMutation } from "react-query"
 import { Context as ContextTaskStorage } from "../../services/TaskStorage"
 
 type FormData = {
@@ -23,7 +23,11 @@ const useCreateTask = () => {
 
   const createTask = (params: CreateTaskParams) => taskStorage.insert(params)
 
-  return useMutation(createTask)
+  return useMutation(createTask, {
+    onSuccess: () => {
+      queryCache.invalidateQueries("tasks")
+    },
+  })
 }
 
 const useOpenCloseable = ({
