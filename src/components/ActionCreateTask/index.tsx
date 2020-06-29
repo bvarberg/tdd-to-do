@@ -1,22 +1,10 @@
-import React, { FunctionComponent, MouseEventHandler, useState } from "react"
+import React, { FunctionComponent, MouseEventHandler } from "react"
 import { useForm } from "react-hook-form"
 import { useCreateTask } from "../../hooks/useCreateTask"
+import { useOpenCloseable } from "../../hooks/useOpenCloseable"
 
 type FormData = {
   description: string
-}
-
-const useOpenCloseable = ({
-  initialIsOpen = false,
-}: {
-  initialIsOpen?: boolean
-} = {}) => {
-  const [isOpen, setIsOpen] = useState(initialIsOpen)
-
-  const open = () => setIsOpen(true)
-  const close = () => setIsOpen(false)
-
-  return { isOpen, open, close }
 }
 
 export const ActionCreateTask: FunctionComponent = () => {
