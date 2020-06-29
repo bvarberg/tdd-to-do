@@ -1,17 +1,5 @@
-import React, { FunctionComponent, useContext } from "react"
-import { useQuery } from "react-query"
-import { Context as ContextTaskStorage } from "../../services/TaskStorage"
-
-const useTasks = () => {
-  const taskStorage = useContext(ContextTaskStorage)
-
-  const fetchTasks = () => taskStorage.fetchCollection()
-
-  return useQuery({
-    queryKey: "tasks",
-    queryFn: fetchTasks,
-  })
-}
+import React, { FunctionComponent } from "react"
+import { useTasks } from "../../hooks/useTasks"
 
 export const ListTasks: FunctionComponent = () => {
   const { data: tasks } = useTasks()
