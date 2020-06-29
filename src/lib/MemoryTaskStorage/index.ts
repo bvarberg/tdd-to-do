@@ -10,4 +10,8 @@ export class MemoryTaskStorage implements TaskStorage {
   async insert({ task }: InsertOptions) {
     this._tasks.push(task)
   }
+
+  async fetchCollection() {
+    return this._tasks.slice()
+  }
 }
