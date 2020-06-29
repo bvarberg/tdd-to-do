@@ -12,9 +12,18 @@ type FormData = {
   description: string
 }
 
+type CreateTaskParams = {
+  task: {
+    description: string
+  }
+}
+
 const useCreateTask = () => {
   const taskStorage = useContext(ContextTaskStorage)
-  return useMutation(taskStorage.insert)
+
+  const createTask = (params: CreateTaskParams) => taskStorage.insert(params)
+
+  return useMutation(createTask)
 }
 
 const useOpenCloseable = ({
