@@ -1,33 +1,9 @@
-import React, {
-  FunctionComponent,
-  MouseEventHandler,
-  useContext,
-  useState,
-} from "react"
+import React, { FunctionComponent, MouseEventHandler, useState } from "react"
 import { useForm } from "react-hook-form"
-import { queryCache, useMutation } from "react-query"
-import { Context as ContextTaskStorage } from "../../services/TaskStorage"
+import { useCreateTask } from "../../hooks/useCreateTask"
 
 type FormData = {
   description: string
-}
-
-type CreateTaskParams = {
-  task: {
-    description: string
-  }
-}
-
-const useCreateTask = () => {
-  const taskStorage = useContext(ContextTaskStorage)
-
-  const createTask = (params: CreateTaskParams) => taskStorage.insert(params)
-
-  return useMutation(createTask, {
-    onSuccess: () => {
-      queryCache.invalidateQueries("tasks")
-    },
-  })
 }
 
 const useOpenCloseable = ({
