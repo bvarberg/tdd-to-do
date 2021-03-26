@@ -39,7 +39,7 @@ module.exports = {
         'from.pathNot re of the not-to-dev-dep rule in the dependency-cruiser configuration',
       from: {
         path: '^src',
-        pathNot: '^(src/factories|src/services|.*[.|/](test|stories)\.tsx?$)'
+        pathNot: '^(src/factories|src/services|src/setupTests.ts|.*[.|/](test|stories)\.tsx?$)'
       },
       to: {
         dependencyTypes: [
